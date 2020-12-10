@@ -1,0 +1,54 @@
+Sub Q2P1()
+currow = 1
+goodPass = 0
+While Cells(currow, 1) <> ""
+   rule = Trim$(Cells(currow, 3).Value)
+   pswd = Trim$(Cells(currow, 4).Value)
+   minnum = Cells(currow, 1).Value
+   maxnum = Cells(currow, 2).Value
+   rulecount = 0
+   For l = 1 To Len(pswd)
+     If Mid$(pswd, l, 1) = rule Then rulecount = rulecount + 1
+   Next
+   If rulecount >= minnum And rulecount <= maxnum Then
+      goodPass = goodPass + 1
+      Cells(currow, 5) = rulecount
+   End If
+   currow = currow + 1
+Wend
+Cells(1, 6) = goodPass
+End Sub
+Sub Q2P2()
+currow = 1
+goodPass = 0
+While Cells(currow, 1) <> ""
+   rule = Trim$(Cells(currow, 3).Value)
+   pswd = Trim$(Cells(currow, 4).Value)
+   minnum = Cells(currow, 1).Value
+   maxnum = Cells(currow, 2).Value
+   rulecount = 0
+   If Mid$(pswd, minnum, 1) = rule Then rulecount = rulecount + 1
+   If Mid$(pswd, maxnum, 1) = rule Then rulecount = rulecount + 1
+   
+   If rulecount = 1 Then
+      goodPass = goodPass + 1
+      Cells(currow, 7) = Mid$(pswd, minnum, 1)
+      Cells(currow, 8) = Mid$(pswd, maxnum, 1)
+   End If
+   currow = currow + 1
+Wend
+Cells(1, 9) = goodPass
+End Sub
+Sub Q3P1()
+currow = 1
+xval = 0
+treecount = 0
+While Cells(currow, 1) <> ""
+   currow = currow + 1
+   xval = xval + 3
+   xval = xval Mod 31
+   If Mid(Cells(currow, 1), xval + 1, 1) = "#" Then treecount = treecount + 1
+   Cells(currow, 2) = treecount
+Wend
+Cells(1, 3) = treecount
+End Sub
