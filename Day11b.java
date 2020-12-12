@@ -12,24 +12,7 @@ public class Day11b {
             int nxc;
             int nxr;
             int ocSeats = 0;
-            int [][] vector  = new int [8][2];
-            vector [0][0] = -1;
-            vector [0][1] = -1;
-            vector [1][0] = 0;
-            vector [1][1] = -1;
-            vector [2][0] = 1;
-            vector [2][1] = -1;
-            vector [3][0] = -1;
-            vector [3][1] = 0;
-            vector [4][0] = 1;
-            vector [4][1] = 0;
-            vector [5][0] = -1;
-            vector [5][1] = 1;
-            vector [6][0] = 0;
-            vector [6][1] = 1;
-            vector [7][0] = 1;
-            vector [7][1] = 1;
-
+            int[][] vector = {{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1, 0}, {-1, 1}, {0, 1}, {1, 1}};
 
 
             try {
@@ -61,7 +44,6 @@ public class Day11b {
                                     } else {
 
                                         if (curSeats[nxr].charAt(nxc) =='L') {
-                                            System.out.print(oc);
                                         fnd = 1;
                                     }
                                     if (curSeats[nxr].charAt(nxc) == '#') {
@@ -110,14 +92,7 @@ public class Day11b {
                         if(cc == rowCount){
                             repeating = 1;
                         }
-
-                    for(int ql5 = 0; ql5 < rowCount; ql5 ++){
-                        System.out.println(curSeats[ql5]);
-                    }
-
-                    System.out.println();
-
-                }
+                                        }
                 System.out.println("The answer is " + ocSeats);
 
             } catch (Exception e) {

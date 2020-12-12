@@ -96,7 +96,6 @@ public class Day11 {
                 if(cc == rowCount){
                     repeating = 1;
                 }
-                System.out.println();
             }
             System.out.println("The answer is " + ocSeats);
 

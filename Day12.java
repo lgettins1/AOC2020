@@ -15,8 +15,6 @@ public class Day12 {
                 BufferedReader br = new BufferedReader(new FileReader("c:/users/lance/documents/aoc20day12input.txt"));
                 while ((thisLine = br.readLine()) != null) {
                     amt = Integer.parseInt(thisLine.substring(1));
-                    System.out.println(x + "," + y);
-                    System.out. println(dir + " " + thisLine);
                     switch (thisLine.charAt(0)) {
                         case 'N' -> y -= amt;
                         case 'E' -> x += amt;
