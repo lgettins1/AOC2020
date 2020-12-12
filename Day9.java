@@ -3,49 +3,50 @@ import java.io.FileReader;
 
 public class Day9 {
     public static void main(String [] args) throws Exception {
-        String thisLine = null;
-        long codes[] = new long[1001];
-        int codenum = 0;
-        int curpos = 25;
+        String thisLine;
+        long[] codes = new long[1001];
+        int codeNum = 0;
+        int curPos = 25;
         long target = 0;
 
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("c:/users/lance/documents/aoc20day9input.txt"));
             while ((thisLine = br.readLine()) != null) {
-                codes[codenum] = Long.parseLong(thisLine);
-                codenum++;
+                codes[codeNum] = Long.parseLong(thisLine);
+                codeNum++;
             }
             int found = 0;
             while (found == 0) {
                 int ck = 0;
-                for (int ol = curpos - 25; ol < curpos - 1; ol++) {
-                    for (int il = ol + 1; il < curpos; il++) {
-                        if (codes[il] + codes[ol] == codes[curpos]) {
+                for (int ol = curPos - 25; ol < curPos - 1; ol++) {
+                    for (int il = ol + 1; il < curPos; il++) {
+                        if (codes[il] + codes[ol] == codes[curPos]) {
                             ck = 1;
+                            break;
                         }
                     }
                 }
                 if(ck == 0){
                     found = 1;
-                    System.out.println("*** The number " + codes[curpos] + " doesn't have two priors***");
-                    target = codes[curpos];
+                    System.out.println("*** The number " + codes[curPos] + " doesn't have two priors***");
+                    target = codes[curPos];
                 } else {
-                    curpos ++;
+                    curPos ++;
                 }
             }
             int fv = 0;
             int sv = 1;
             int found2 = 0;
-            long temptotal;
+            long tempTotal;
             long mxv = 0;
             long mnv = 999999999;
             while(found2 == 0){
-                temptotal = 0;
+                tempTotal = 0;
                 for(int a = fv; a <= sv; a ++){
-                    temptotal += codes[a];
+                    tempTotal += codes[a];
                 }
-                if(temptotal == target){
+                if(tempTotal == target){
                     for(int ql = fv; ql <= sv; ql ++){
                         if(codes[ql] < mnv){
                             mnv = codes[ql];
@@ -57,7 +58,7 @@ public class Day9 {
                     System.out.println(mnv + " + " + mxv + " = " +(mnv + mxv));
                     found2 = 1;
                 } else {
-                    if( temptotal < target){
+                    if( tempTotal < target){
                         sv ++;
                         if(sv > 1000){
                             fv ++;

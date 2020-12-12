@@ -9,7 +9,7 @@ public class Day5 {
         int minr;
         int minc;
         int maxp = 0;
-        int seats[] = new int[1000];
+        int[] seats = new int[1000];
         int seatn = 0;
 
         try {
@@ -18,12 +18,12 @@ public class Day5 {
                 minr = 0;
                 minc = 0;
                 for(int a = 0; a < 7; a++) {
-                    if (thisLine.substring(a, a + 1).equals("B")) {
+                    if (thisLine.charAt(a) == 'B') {
                         minr += Math.pow(2, (6 - a));
                     }
                 }
                 for(int a = 0; a < 3; a++){
-                    if(thisLine.substring(a + 7, a + 8).equals("R")){
+                    if(thisLine.charAt(a + 7) == 'R'){
                         minc += Math.pow(2,(2 - a));
                     }
                 }

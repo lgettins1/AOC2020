@@ -3,34 +3,35 @@ import java.io.FileReader;
 import java.util.Arrays;
 
 public class Day10b {
-    public static int adapters[] = new int[102];
-    public static int linenum = 1;
-    public static int maxval = 0;
+    public static int [] adapters = new int[102];
+    public static int lineNum = 1;
+    public static int maxVal = 0;
     public static long combos = 0;
 
+
     public static void main(String[] args) throws Exception {
-        String thisLine = null;
+        String thisLine ;
         adapters[0] = 0;
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("c:/users/lance/documents/aoc20day10input.txt"));
             while ((thisLine = br.readLine()) != null) {
                 int pv = Integer.parseInt(thisLine);
-                if (pv > maxval) {
-                    maxval = pv;
+                if (pv > maxVal) {
+                    maxVal = pv;
                 }
-                adapters[linenum] = pv;
+                adapters[lineNum] = pv;
 
-                linenum++;
+                lineNum++;
             }
-            maxval += 3;
-            adapters[linenum] = maxval;
+            maxVal += 3;
+            adapters[lineNum] = maxVal;
 
             Arrays.sort(adapters);
             System.out.printf("Modified  : %s",
                     Arrays.toString(adapters));
             System.out.println();
-            findnext(0, 0);
+            findNext(0, 0);
 
 
         } catch (Exception e) {
@@ -38,31 +39,31 @@ public class Day10b {
         }
     }
 
-    public static void findnext(int jolt, int curpos) {
-        if (adapters[curpos] == maxval) {
+    public static void findNext(int jolt, int curPos) {
+        if (adapters[curPos] == maxVal) {
             combos++;
             System.out.println(combos);
         }
-        if (curpos < linenum) {
-            if (adapters[curpos + 1] == jolt + 1) {
-                findnext(jolt + 1, curpos + 1);
+        if (curPos < lineNum) {
+            if (adapters[curPos + 1] == jolt + 1) {
+                findNext(jolt + 1, curPos + 1);
             }
-            if (adapters[curpos + 1] == jolt + 2) {
-                findnext(jolt + 2, curpos + 1);
+            if (adapters[curPos + 1] == jolt + 2) {
+                findNext(jolt + 2, curPos + 1);
             }
-            if (adapters[curpos + 1] == jolt + 3) {
-                findnext(jolt + 3, curpos + 1);
+            if (adapters[curPos + 1] == jolt + 3) {
+                findNext(jolt + 3, curPos + 1);
             }
-            if (curpos < linenum - 1) {
-                if (adapters[curpos + 2] == jolt + 2) {
-                findnext(jolt + 2, curpos + 2);
+            if (curPos < lineNum - 1) {
+                if (adapters[curPos + 2] == jolt + 2) {
+                findNext(jolt + 2, curPos + 2);
             }
-            if (adapters[curpos + 2] == jolt + 3) {
-                findnext(jolt + 3, curpos + 2);
+            if (adapters[curPos + 2] == jolt + 3) {
+                findNext(jolt + 3, curPos + 2);
             }
-                if (curpos < linenum - 2) {
-                    if (adapters[curpos + 3] == jolt + 3) {
-                findnext(jolt + 3, curpos + 3);
+                if (curPos < lineNum - 2) {
+                    if (adapters[curPos + 3] == jolt + 3) {
+                findNext(jolt + 3, curPos + 3);
             }
         }
     }

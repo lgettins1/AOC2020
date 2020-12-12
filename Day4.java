@@ -3,14 +3,14 @@ import java.io.FileReader;
 
 public class Day4 {
         public static void main(String [] args) throws Exception {
-            String thisLine = null;
-            String thisDoc = "";
+            String thisLine;
+            StringBuilder thisDoc = new StringBuilder();
             String lbl;
             String value;
             int valid = 0;
             int fc;
-            String doc [];
-            String eyes[] = new String[7];
+            String[] doc;
+            String[] eyes = new String[7];
             eyes[0] = "amb";
             eyes[1] = "blu";
             eyes[2] = "brn";
@@ -24,30 +24,30 @@ public class Day4 {
                 BufferedReader br = new BufferedReader(new FileReader("c:/users/lance/documents/aoc20day4input.txt"));
                 while ((thisLine = br.readLine()) != null) {
                     if (thisLine.length() > 0) {
-                        thisDoc += thisLine + " ";
+                        thisDoc.append(thisLine).append(" ");
                     } else {
                         // parse document and reset thisDoc
                         fc = 0;
-                        doc = thisDoc.split(" ");
+                        doc = thisDoc.toString().split(" ");
 
 
-                        for(int a = 0; a < doc.length; a++) {
+                        for (String s : doc) {
 
-                            lbl = doc[a].substring(0 , 3);
-                            value = doc[a].substring(4);
+                            lbl = s.substring(0, 3);
+                            value = s.substring(4);
 
-                            switch(lbl){
+                            switch (lbl) {
                                 case "byr":
-                                    if(value.length() == 4){
+                                    if (value.length() == 4) {
                                         int yc = 0;
-                                        for(int ql = 0; ql < 4; ql ++){
-                                            if(value.charAt(ql) > 47 && value.charAt(ql) < 58){
-                                                yc ++;
+                                        for (int ql = 0; ql < 4; ql++) {
+                                            if (value.charAt(ql) > 47 && value.charAt(ql) < 58) {
+                                                yc++;
                                             }
-                                            if(yc ==4){
+                                            if (yc == 4) {
                                                 int ty = Integer.parseInt(value);
-                                                if(ty >= 1920 && ty <= 2002){
-                                                    fc ++;
+                                                if (ty >= 1920 && ty <= 2002) {
+                                                    fc++;
                                                 }
                                             }
                                         }
@@ -55,76 +55,77 @@ public class Day4 {
 
                                     break;
                                 case "iyr":
-                                    if(value.length() == 4){
+                                    if (value.length() == 4) {
                                         int yc = 0;
-                                        for(int ql = 0; ql < 4; ql ++) {
+                                        for (int ql = 0; ql < 4; ql++) {
                                             if (value.charAt(ql) > 47 && value.charAt(ql) < 58) {
                                                 yc++;
                                             }
                                         }
-                                        if(yc ==4){
+                                        if (yc == 4) {
                                             int ty = Integer.parseInt(value);
-                                            if(ty >= 2010 && ty <= 2020){
-                                                fc ++;
+                                            if (ty >= 2010 && ty <= 2020) {
+                                                fc++;
                                             }
                                         }
                                     }
                                     break;
                                 case "eyr":
-                                    if(value.length() == 4){
+                                    if (value.length() == 4) {
                                         int yc = 0;
-                                        for(int ql = 0; ql < 4; ql ++) {
+                                        for (int ql = 0; ql < 4; ql++) {
                                             if (value.charAt(ql) > 47 && value.charAt(ql) < 58) {
                                                 yc++;
                                             }
                                         }
-                                        if(yc ==4){
+                                        if (yc == 4) {
                                             int ty = Integer.parseInt(value);
-                                            if(ty >= 2020 && ty <= 2030){
-                                                fc ++;
+                                            if (ty >= 2020 && ty <= 2030) {
+                                                fc++;
                                             }
                                         }
 
                                     }
                                     break;
                                 case "hgt":
-                                    if(value.length() == 4){
-                                        if(value.substring(2).equals("in")){
+                                    if (value.length() == 4) {
+                                        if (value.substring(2).equals("in")) {
                                             int yc = 0;
-                                            for(int ql = 0; ql < 2; ql ++) {
+                                            for (int ql = 0; ql < 2; ql++) {
                                                 if (value.charAt(ql) > 47 && value.charAt(ql) < 58) {
                                                     yc++;
                                                 }
                                             }
-                                            if(yc == 2){
-                                                int ty = Integer.parseInt(value.substring(0 , 2));
-                                                if(ty >= 59 && ty <= 76){
-                                                    fc ++;
+                                            if (yc == 2) {
+                                                int ty = Integer.parseInt(value.substring(0, 2));
+                                                if (ty >= 59 && ty <= 76) {
+                                                    fc++;
                                                 }
                                             }
                                         }
                                     } else {
-                                        if(value.length() == 5){
-                                            if(value.substring(3).equals("cm")){
+                                        if (value.length() == 5) {
+                                            if (value.substring(3).equals("cm")) {
                                                 int yc = 0;
-                                                for(int ql = 0; ql < 3; ql ++){
-                                                    if(value.charAt(ql) > 47 && value.charAt(ql) < 58){
-                                                        yc ++;
+                                                for (int ql = 0; ql < 3; ql++) {
+                                                    if (value.charAt(ql) > 47 && value.charAt(ql) < 58) {
+                                                        yc++;
                                                     }
                                                 }
-                                                if(yc == 3){
-                                                    int ty = Integer.parseInt(value.substring(0 , 3));
-                                                    if(ty >= 150 && ty <= 193){
-                                                        fc ++;
+                                                if (yc == 3) {
+                                                    int ty = Integer.parseInt(value.substring(0, 3));
+                                                    if (ty >= 150 && ty <= 193) {
+                                                        fc++;
                                                     }
                                                 }
 
-                                            }}
+                                            }
+                                        }
                                     }
                                     break;
                                 case "hcl":
-                                    if(value.length() == 7){
-                                        if(value.charAt(0) == 35) {
+                                    if (value.length() == 7) {
+                                        if (value.charAt(0) == 35) {
                                             int yc = 0;
                                             for (int ql = 1; ql < 7; ql++) {
                                                 if (value.charAt(ql) > 47 && value.charAt(ql) < 58) {
@@ -143,17 +144,17 @@ public class Day4 {
                                     break;
                                 case "ecl":
                                     int em = 0;
-                                    for(int ql = 0; ql < 7; ql++){
-                                        if(value.equals(eyes[ql])){
-                                            em ++;
+                                    for (int ql = 0; ql < 7; ql++) {
+                                        if (value.equals(eyes[ql])) {
+                                            em++;
                                         }
                                     }
-                                    if(em == 1){
-                                        fc ++;
+                                    if (em == 1) {
+                                        fc++;
                                     }
                                     break;
                                 case "pid":
-                                    if(value.length() == 9) {
+                                    if (value.length() == 9) {
                                         int yc = 0;
                                         for (int ql = 0; ql < 9; ql++) {
                                             if (value.charAt(ql) > 47 && value.charAt(ql) < 58) {
@@ -174,7 +175,7 @@ public class Day4 {
                         if(fc == 7){
                             valid ++;
                         }
-                        thisDoc = "";
+                        thisDoc = new StringBuilder();
                     }
                 }
                 System.out.println("Number of valid passports:" + valid);

@@ -15,12 +15,6 @@ While Cells(currow, 1) <> ""
    Wend
  currow = currow + 1
 Wend
-  
-  
-    ActiveWorkbook.FollowHyperlink Address:= _
-        "https://odc.officeapps.live.com/odc/help/clientdeveloper?lcid=1033&syslcid=1033&uilcid=1033&ver=15&helpnamespace=EXCEL" _
-        , NewWindow:=False, AddHistory:=True
-    Range("A2").Select
 End Sub
 
 Sub Q1P2()
@@ -37,7 +31,6 @@ While Cells(currow, 1) <> ""
          Cells(2, 6) = Cells(nextrow, 1).Value
          Cells(3, 5) = thirdrow
          Cells(3, 6) = Cells(thirdrow, 1).Value
-         
          Cells(4, 5) = Cells(currow, 1) + Cells(nextrow, 1) + Cells(thirdrow, 1)
          Cells(4, 6) = Cells(currow, 1) * Cells(nextrow, 1) * Cells(thirdrow, 1)
       End If

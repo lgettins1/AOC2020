@@ -4,60 +4,54 @@ import java.util.Arrays;
 
 public class Day10c {
     public static void main(String [] args) throws Exception {
-        String thisLine = null;
-        int adapters[] = new int [102];
-        int linenum = 1;
+        String thisLine;
+        int[] adapters = new int [102];
+        int lineNum = 1;
         adapters[0] = 0;
-        int maxval = 0;
+        int maxVal = 0;
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("c:/users/lance/documents/aoc20day10input.txt"));
             while ((thisLine = br.readLine()) != null) {
                 int pv = Integer.parseInt(thisLine);
-                if(pv > maxval){
-                    maxval = pv;
+                if(pv > maxVal){
+                    maxVal = pv;
                 }
-                adapters[linenum] = pv;
+                adapters[lineNum] = pv;
 
-                linenum++;
+                lineNum++;
             }
 
-           adapters[linenum ] = maxval + 3;
+           adapters[lineNum ] = maxVal + 3;
 
             Arrays.sort(adapters);
             System.out.printf("Modified  : %s",
                     Arrays.toString(adapters));
             System.out.println();
             int prgps = 0;
-            int onelist = 0;
-            int rlist [][] = new int [2][30];
-            for(int ql = 1; ql <= linenum; ql ++){
+            int onList = 0;
+            int[][] rList = new int [2][30];
+            for(int ql = 1; ql <= lineNum; ql ++){
                 if(adapters[ql] - adapters[ql - 1] == 1){
-                    onelist ++;
+                    onList ++;
                 } else {
-                    if(onelist >= 2){
+                    if(onList >= 2){
 
-                        rlist[0][prgps] = onelist;
-                        switch(onelist){
-                            case 2:
-                                rlist[1][prgps] = 2;
-                                break;
-                            case 3:
-                                rlist[1][prgps] = 4;
-                                break;
-                            case 4:
-                                rlist[1][prgps] = 7;
-                                break;
+                        rList[0][prgps] = onList;
+                        switch (onList) {
+                            case 2 -> rList[1][prgps] = 2;
+                            case 3 -> rList[1][prgps] = 4;
+                            case 4 -> rList[1][prgps] = 7;
                         }
                         prgps ++;
                     }
-                    onelist = 0;
+                    onList = 0;
                 }
             }
             long prd = 1;
             for(int ql = 0; ql < prgps; ql ++){
-                System.out.println(rlist[0][ql] + " , " + rlist[1][ql]);
-                prd = prd * rlist[1][ql];
+                System.out.println(rList[0][ql] + " , " + rList[1][ql]);
+                prd = prd * rList[1][ql];
             }
             System.out.println("The answer is " + prd);
 

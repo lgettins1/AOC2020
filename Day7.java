@@ -23,7 +23,7 @@ public class Day7 {
                     String[] pb = scanline[0].split(" ");
                     bagDesc[ruleCount][0] = pb[0] + " " + pb[1];
                     bagCount[ruleCount][0] = l;
-                    if (scanline[0].substring(scanline[0].length() - 14).equals("no other bags.")) {
+                    if (scanline[0].endsWith("no other bags.")) {
                         bagCount[ruleCount][0] = 0;
                     } else {
                         bagDesc[ruleCount][1] = pb[5] + " " + pb[6];
@@ -38,7 +38,7 @@ public class Day7 {
                     }
                     ruleCount ++;
                 }
-                int oldanswer = answers;
+                int oldAnswer = answers;
                 int bd = 1;
                 while(bd == 1){
 
@@ -51,6 +51,7 @@ public class Day7 {
                                         for(int ce = 0; ce <= answers; ce ++){
                                             if(target[ce].equals(bagDesc[ql][0])){
                                                 unique = 0;
+                                                break;
                                             }
                                         }
                                         if(unique == 1){
@@ -62,10 +63,10 @@ public class Day7 {
                             }
                         }
                     }
-                    if(answers == oldanswer){
+                    if(answers == oldAnswer){
                         bd = 0;
                     } else {
-                        oldanswer = answers;
+                        oldAnswer = answers;
                     }
                 }
                 for(int a = 0; a <= answers; a ++){

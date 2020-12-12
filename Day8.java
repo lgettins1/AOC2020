@@ -3,7 +3,7 @@ import java.io.FileReader;
 
 public class Day8  {
         public static void main(String [] args) throws Exception {
-            String thisLine = null;
+            String thisLine;
             String [] oper = new String [700];
             int [] argu = new int [700];
             int [] hist = new int [700];
@@ -22,22 +22,19 @@ public class Day8  {
                 }
                 int repeat = 0;
                 while(repeat == 0){
-                    switch(oper[curpos]){
-                        case "nop":
-                            curpos ++;
-                            break;
-                        case "acc":
+                    switch (oper[curpos]) {
+                        case "nop" -> curpos++;
+                        case "acc" -> {
                             accum += argu[curpos];
-                            curpos ++;
-                            break;
-                        case "jmp":
-                            curpos += argu[curpos];
-                            break;
+                            curpos++;
+                        }
+                        case "jmp" -> curpos += argu[curpos];
                     }
 
                     for(int ql = 0; ql <= stepcount; ql ++){
-                        if(hist[ql] == curpos){
+                        if (hist[ql] == curpos) {
                             repeat = 1;
+                            break;
                         }
                     }
                     if(repeat == 0){

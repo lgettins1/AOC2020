@@ -4,29 +4,25 @@ import java.util.Arrays;
 
 public class Day10 {
     public static void main(String [] args) throws Exception {
-        String thisLine = null;
-        int adapters[] = new int [102];
-        int linenum = 1;
+        String thisLine;
+        int[] adapters = new int [102];
+        int lineNum = 1;
         adapters[0] = 0;
-        int maxval = 0;
+        int maxVal = 0;
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("c:/users/lance/documents/aoc20day10input.txt"));
             while ((thisLine = br.readLine()) != null) {
                 int pv = Integer.parseInt(thisLine);
-                if(pv > maxval){
-                    maxval = pv;
+                if(pv > maxVal){
+                    maxVal = pv;
                 }
-                adapters[linenum] = pv;
+                adapters[lineNum] = pv;
 
-                linenum++;
+                lineNum++;
             }
 
-            System.out.printf("Original  : %s",
-                    Arrays.toString(adapters));
-            System.out.println();
-            adapters[linenum ] = maxval + 3;
-
+            adapters[lineNum ] = maxVal + 3;
             Arrays.sort(adapters);
              System.out.printf("Modified  : %s",
                     Arrays.toString(adapters));
@@ -34,12 +30,12 @@ public class Day10 {
 
             int oj = 0;
             int tj = 0;
-            for(int ql = 1; ql <= linenum; ql ++){
-             //   System.out.println(adapters[ql]);
-                if(adapters[ql] - adapters[ql - 1] == 1){
+            for(int ql = 1; ql <= lineNum; ql ++){
+                int i = adapters[ql] - adapters[ql - 1];
+                if(i == 1){
                     oj ++;
                 }
-                if(adapters[ql] - adapters[ql - 1] == 3){
+                if(i == 3){
                     tj ++;
                 }
             }

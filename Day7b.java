@@ -5,7 +5,7 @@ public class Day7b {
         public static int [][] bagCount = new int [600][8];
         public static String [][] bagDesc = new String [600][10];
         public static int ruleCount;
-        public static int globalbagcount;
+        public static int globalBagCount;
 
         public static void main(String [] args) throws Exception {
             String thisLine;
@@ -23,7 +23,7 @@ public class Day7b {
                     String[] pb = scanline[0].split(" ");
                     bagDesc[ruleCount][0] = pb[0] + " " + pb[1];
                     bagCount[ruleCount][0] = l;
-                    if (scanline[0].substring(scanline[0].length() - 14).equals("no other bags.")) {
+                    if (scanline[0].endsWith("no other bags.")) {
                         bagCount[ruleCount][0] = 0;
                     } else {
                         bagDesc[ruleCount][1] = pb[5] + " " + pb[6];
@@ -38,9 +38,9 @@ public class Day7b {
                     }
                     ruleCount ++;
                 }
-                globalbagcount = -1;
+                globalBagCount = -1;
                 returnBag("shiny gold");
-                System.out.println(globalbagcount + " bags");
+                System.out.println(globalBagCount + " bags");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -49,7 +49,7 @@ public class Day7b {
         public static void returnBag(String bag) {
             for(int ql = 0; ql < ruleCount; ql ++){
                 if(bagDesc[ql][0].equals(bag)){
-                    globalbagcount++;
+                    globalBagCount++;
                     if(bagCount[ql][0] != 0) {
                         for(int ql2 = 1; ql2 <= bagCount[ql][0]; ql2++){
                             for(int ql3 = 1; ql3 <= bagCount[ql][ql2];ql3 ++){
@@ -60,5 +60,4 @@ public class Day7b {
                 }
             }
         }
-
 }
