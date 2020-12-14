@@ -9,7 +9,6 @@ public class Day10 {
         int lineNum = 1;
         adapters[0] = 0;
         int maxVal = 0;
-
         try {
             BufferedReader br = new BufferedReader(new FileReader("c:/users/lance/documents/aoc20day10input.txt"));
             while ((thisLine = br.readLine()) != null) {
@@ -18,7 +17,6 @@ public class Day10 {
                     maxVal = pv;
                 }
                 adapters[lineNum] = pv;
-
                 lineNum++;
             }
 
@@ -27,7 +25,6 @@ public class Day10 {
              System.out.printf("Modified  : %s",
                     Arrays.toString(adapters));
             System.out.println();
-
             int oj = 0;
             int tj = 0;
             for(int ql = 1; ql <= lineNum; ql ++){

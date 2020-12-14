@@ -21,12 +21,10 @@ public class Day10b {
                     maxVal = pv;
                 }
                 adapters[lineNum] = pv;
-
                 lineNum++;
             }
             maxVal += 3;
             adapters[lineNum] = maxVal;
-
             Arrays.sort(adapters);
             System.out.printf("Modified  : %s",
                     Arrays.toString(adapters));

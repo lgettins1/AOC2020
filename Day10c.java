@@ -18,7 +18,6 @@ public class Day10c {
                     maxVal = pv;
                 }
                 adapters[lineNum] = pv;
-
                 lineNum++;
             }
 
@@ -54,8 +53,6 @@ public class Day10c {
                 prd = prd * rList[1][ql];
             }
             System.out.println("The answer is " + prd);
-
-
 
 
         } catch (Exception e) {
