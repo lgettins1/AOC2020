@@ -18,7 +18,6 @@ public class Day17b {
                 }
             }
 
-
             int w = 15;
             int x = 15;
             int y = 15;
